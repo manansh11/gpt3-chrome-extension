@@ -13,28 +13,48 @@ const encode = (i) => {
     return btoa(i);
 }
 
+// const saveKey = () => {
+//     // get input
+//     const input = document.getElementById('key_input');
+//     // if there is an input, not null
+//     if (input){
+//         // destructure its value
+//         const {value} = input;
+
+//         // encode the value
+//         const encodedVal = encode(value);
+
+//         // Save to chrome storage
+//         // Set the encoded value as the value to key 'openai-key
+//         // Then call back
+//         chrome.storage.local.set({'openai-key' : encodedVal}, () => {
+//             // Remove the input section
+//             document.getElementById('key_needed').style.display = 'none'
+//             // Redisplay the change key document
+//             document.getElementById('key_entered').style.display = 'block';
+//         })
+//     }
+// }
+
+
 const saveKey = () => {
-    // get input
     const input = document.getElementById('key_input');
-    // if there is an input, not null
-    if (input){
-        // destructure its value
-        const {value} = input;
-
-        // encode the value
-        const encodedVal = encode(value);
-
-        // Save to chrome storage
-        // Set the encoded value as the value to key 'openai-key
-        // Then call back
-        chrome.storage.local.set({'openai-key' : encodedVal}, () => {
-            // Remove the input section
-            document.getElementById('key_needed').style.display = 'none'
-            // Redisplay the change key document
-            document.getElementById('key_entered').style.display = 'block';
-        })
+  
+    if (input) {
+      const { value } = input;
+  
+      // Encode String
+      const encodedValue = encode(value);
+  
+      // Save to google storage
+      chrome.storage.local.set({ 'openai-key': encodedValue }, () => {
+        document.getElementById('key_needed').style.display = 'none';
+        document.getElementById('key_entered').style.display = 'block';
+      });
     }
-}
+  };
+
+
 
 const changeKey = () => {
     document.getElementById('key_needed').style.display = "block"
