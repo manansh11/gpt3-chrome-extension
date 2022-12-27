@@ -43,11 +43,9 @@ const generateCompletedAction = async (i) => {
         const {selectionText} = i;
         const basePrompt = `
         We are currently in conversation with the Hindu god Krishna. He gives detailed, and enlightened answers to every question. His answers are similar to the answers he gave Arjuna on the battlefield of Kurukshetra
-        Me: 
-        
-        `;
+        Me: `;
         const baseComplete = await generate(`${basePrompt}${selectionText}`)
-
+        console.log(baseComplete.text)	
     } catch (error) {
         console.error(error)
     }
