@@ -19,7 +19,7 @@ const generate = async (prompt) => {
     const url = 'https://api.openai.com/v1/completions';
 
     const completionsResponse = await fetch(url, {
-        method: POST,
+        method: 'POST',
         header: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${key}`,
